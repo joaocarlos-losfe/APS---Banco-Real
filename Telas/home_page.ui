@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainHomePage</class>
+ <widget class="QMainWindow" name="MainHomePage">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1200</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <family>Segoe UI</family>
+    <stylestrategy>NoAntialias</stylestrategy>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Banco Real</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../Assets/ico.ico</normaloff>../Assets/ico.ico</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">background-color: #F4F5F7;</string>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QFrame" name="navegacao">
+        <property name="minimumSize">
+         <size>
+          <width>160</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #333333;</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_5">
+             <item>
+              <widget class="QPushButton" name="logo">
+               <property name="styleSheet">
+                <string notr="true">background-color: transparent; color: white; font-weight: bold; font-size: 20px; text-align: left;</string>
+               </property>
+               <property name="text">
+                <string>  Banco real</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>../Assets/money.png</normaloff>../Assets/money.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>32</width>
+                 <height>32</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <spacer name="verticalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Maximum</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_goto_tela_cadastro">
+             <property name="styleSheet">
+              <string notr="true">QPushButton
+{
+	color: white; 
+	font-size: 14px;
+	font-weight: bold; 
+	margin-top: 8px; 		
+	margin-bottom: 8px; 
+	padding: 10px;
+	text-align: left;
+	border-radius: 10px;
+	transition: all 1s ease-in;
+}
+
+QPushButton:hover
+{
+	transition: all 1s ease-out;
+	background-color: #646464;
+}
+
+QPushButton:pressed
+{
+	background-color: #434343;
+}
+
+</string>
+             </property>
+             <property name="text">
+              <string>   Cadastro</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>../Assets/website.png</normaloff>../Assets/website.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="flat">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_goto_tela_saque">
+             <property name="styleSheet">
+              <string notr="true">QPushButton
+{
+	color: white; 
+	font-size: 14px;
+	font-weight: bold; 
+	margin-top: 8px; 		
+	margin-bottom: 8px; 
+	padding: 10px;
+	text-align: left;
+	border-radius: 10px;
+}
+
+QPushButton:hover
+{
+	transition: all 1s ease-out;
+	background-color: #646464;
+}
+
+QPushButton:pressed
+{
+	background-color: #434343;
+}
+
+</string>
+             </property>
+             <property name="text">
+              <string>   Saque</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>../Assets/withdraw.png</normaloff>../Assets/withdraw.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_goto_tela_transferencia">
+             <property name="styleSheet">
+              <string notr="true">QPushButton
+{
+	color: white; 
+	font-size: 14px;
+	font-weight: bold; 
+	margin-top: 8px; 		
+	margin-bottom: 8px; 
+	padding: 10px;
+	text-align: left;
+	border-radius: 10px;
+}
+
+QPushButton:hover
+{
+	transition: all 1s ease-out;
+	background-color: #646464;
+}
+
+QPushButton:pressed
+{
+	background-color: #434343;
+}
+
+</string>
+             </property>
+             <property name="text">
+              <string>   Transferencia</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>../Assets/money-transfer.png</normaloff>../Assets/money-transfer.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_goto_tela_deposito">
+             <property name="styleSheet">
+              <string notr="true">QPushButton
+{
+	color: white; 
+	font-size: 14px;
+	font-weight: bold; 
+	margin-top: 8px; 		
+	margin-bottom: 8px; 
+	padding: 10px;
+	text-align: left;
+	border-radius: 10px;
+}
+
+QPushButton:hover
+{
+	transition: all 1s ease-out;
+	background-color: #646464;
+}
+
+QPushButton:pressed
+{
+	background-color: #434343;
+}
+
+</string>
+             </property>
+             <property name="text">
+              <string>   Deposito</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>../Assets/savings.png</normaloff>../Assets/savings.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_goto_tela_extrato">
+             <property name="styleSheet">
+              <string notr="true">QPushButton
+{
+	color: white; 
+	font-size: 14px;
+	font-weight: bold; 
+	margin-top: 8px; 		
+	margin-bottom: 8px; 
+	padding: 10px;
+	text-align: left;
+	border-radius: 10px;
+}
+
+QPushButton:hover
+{
+	transition: all 1s ease-out;
+	background-color: #646464;
+}
+
+QPushButton:pressed
+{
+	background-color: #434343;
+}
+
+</string>
+             </property>
+             <property name="text">
+              <string>   Extrato</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>../Assets/folder.png</normaloff>../Assets/folder.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_got_tela_ajuda">
+             <property name="styleSheet">
+              <string notr="true">QPushButton
+{
+	color: white; 
+	font-size: 14px;
+	font-weight: bold; 
+	margin-top: 8px; 		
+	margin-bottom: 8px; 
+	padding: 10px;
+	text-align: left;
+	border-radius: 10px;
+}
+
+QPushButton:hover
+{
+	transition: all 1s ease-out;
+	background-color: #646464;
+}
+
+QPushButton:pressed
+{
+	background-color: #434343;
+}
+
+</string>
+             </property>
+             <property name="text">
+              <string>   Ajuda</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>../Assets/help.png</normaloff>../Assets/help.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>25</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="shortcut">
+              <string/>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Maximum</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>10</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QStackedWidget" name="stack_telas">
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="widget_tela_cadastro">
+         <layout class="QVBoxLayout" name="verticalLayout_5"/>
+        </widget>
+        <widget class="QWidget" name="widget_tela_saque">
+         <layout class="QVBoxLayout" name="verticalLayout_7"/>
+        </widget>
+        <widget class="QWidget" name="widget_tela_transferencia">
+         <layout class="QVBoxLayout" name="verticalLayout_11"/>
+        </widget>
+        <widget class="QWidget" name="widget_tela_deposito">
+         <layout class="QVBoxLayout" name="verticalLayout_4"/>
+        </widget>
+        <widget class="QWidget" name="widget_tela_extrato">
+         <layout class="QVBoxLayout" name="verticalLayout_6"/>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
