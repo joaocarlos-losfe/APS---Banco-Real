@@ -134,15 +134,15 @@ class Ui_MainHomePage(object):
 
         try:
             nome = self.tela_cadastro.le_cad_nome.text()
-            sobre_nome = self.tela_cadastro.le_cad_sobrenome.text()
+            email = self.tela_cadastro.le_cad_email.text()
             cpf = self.tela_cadastro.le_cad_cpf.text()
             senha = self.tela_cadastro.le_cad_senha.text()
 
-            if nome == '' or sobre_nome == '' or cpf  == '' or senha == '':
+            if nome == '' or email == '' or cpf  == '' or senha == '':
                 Dialogs.alert_mensage('⚠ Algun(s) campo(s) estão vazio(s) ', "ERRO")
             else:
 
-                server_response = Client.enviar_dados("cadastro/"+nome+"/"+sobre_nome+"/"+cpf+"/"+senha)
+                server_response = Client.enviar_dados("cadastro/"+nome+"/"+email+"/"+cpf+"/"+senha)
                 server_response = server_response.split('/')
 
                 if server_response[0] == "True":
@@ -310,7 +310,7 @@ class Ui_MainHomePage(object):
 
         #tela cadastro
         self.tela_cadastro.le_cad_nome.setText('')
-        self.tela_cadastro.le_cad_sobrenome.setText('')
+        self.tela_cadastro.le_cad_email.setText('')
         self.tela_cadastro.le_cad_cpf.setText('')
         self.tela_cadastro.le_cad_senha.setText('')
 

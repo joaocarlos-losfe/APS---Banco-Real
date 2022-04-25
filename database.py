@@ -5,11 +5,46 @@ import mysql.connector as mysql
 from querys import Query
 from Modelos.conta import Conta
 
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+import smtplib
+
+class SendEmail():
+    def __init__(self) -> None:
+
+        # create message object instance
+        self._msg = MIMEMultipart()
+        # setup the parameters of the message
+        self._password = "tjzbdmfudgvaxucd"
+        self._msg['From'] = "hjunior854@gmail.com"
+
+        # create server
+        self._server = smtplib.SMTP('smtp.gmail.com: 587')
+
+        self._server.starttls()
+
+        # Login Credentials for sending the mail
+        self._server.login(self._msg['From'], self._password)
+
+    def sendEmail(self, toEmail="wendelnunes9999@gmail.com", descricao="Subscription", message="Corpo da mensssagem da vazia!"):
+        # message = message
+        # add in the message body
+        self._msg.attach(MIMEText(message, 'plain'))
+
+        self._msg['To'] = toEmail
+        self._msg['Subject'] = descricao
+
+        # send the message via the server.
+        self._server.sendmail(self._msg['From'],
+                              self._msg['To'], self._msg.as_string())
+
+        self._server.quit()
+
 class Database:
 
     def __init__(self):
 
-        self.conexao = mysql.connect(host = 'localhost', db = 'BancoReal',user = 'root', passwd = 'sousafej2021')
+        self.conexao = mysql.connect(host = 'sql368.main-hosting.eu', db = 'u831868453_aps_areal_bank', user = 'u831868453_user_aps_areal', passwd = 'L0@xF*f+')
         self.cursor = self.conexao.cursor()
         self.inicializar_db()
 
@@ -22,9 +57,13 @@ class Database:
     def adicionar_conta(self, conta:Conta):
 
         try:
-            self.cursor.execute(Query.query_save_cliente(), (conta.titular.cpf, conta.titular.nome, conta.titular.sobre_node))
+            self.cursor.execute(Query.query_save_cliente(), (conta.titular.cpf, conta.titular.nome, conta.titular.email))
             self.cursor.execute(Query.query_save_date_conta(), (conta.numero, conta.titular.cpf, conta.saldo, conta.senha, conta.limite))
             self.conexao.commit()
+            
+            Enviar = SendEmail()
+            Enviar.sendEmail(conta.titular.email,'Banco Real: Abertura de conta',f'{conta.titular.nome}, Bem-vindo ao Banco Real!\nSua conta é: {conta._numero_conta}')
+
             return "True"
 
         except BaseException as e:
