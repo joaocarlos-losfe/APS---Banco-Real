@@ -116,4 +116,11 @@ class Query:
         return  """
                     SELECT historico FROM Historicos WHERE cpf_titular = %s;
                 """
+    #sobrenome é o email
+    @staticmethod
+    def query_get_full_data_user():
+        return  """
+                    select nome, sobrenome from Clientes, Contas where cpf_titular = %s;
+                """
+
     # FIM

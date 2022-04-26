@@ -1,14 +1,18 @@
 import os
 from logging import Logger
 from typing import List, Tuple
+
 import mysql.connector as mysql
 from querys import Query
-from Modelos.conta1 import Conta
-from Modelos.conta1 import Notifica_Cliente
+from Modelos.conta import Conta
 
-class Database:
+from Padroes.singleton import Singleton
+
+class Database(metaclass = Singleton):
 
     def __init__(self):
+        
+        super().__init__()
 
         self.conexao = mysql.connect(host = 'sql368.main-hosting.eu', db = 'u831868453_aps_areal_bank', user = 'u831868453_user_aps_areal', passwd = 'L0@xF*f+')
         self.cursor = self.conexao.cursor()
@@ -25,9 +29,6 @@ class Database:
             self.cursor.execute(Query.query_save_cliente(), (conta.titular.cpf, conta.titular.nome, conta.titular.email))
             self.cursor.execute(Query.query_save_date_conta(), (conta.numero, conta.titular.cpf, conta.saldo, conta.senha, conta.limite))
             self.conexao.commit()
-
-            Notifica_Cliente(conta)
-            conta.notify()
 
             return "True"
 
@@ -46,7 +47,7 @@ class Database:
     def atualizar_saldo(self, cpf:str, valor:float):
         self.cursor.execute(Query.query_atualizar_saldo(), (valor, cpf,))
         self.conexao.commit()
-        # Notifica_Cliente(conta)
+        # notify_new_account(conta)
         # conta.notify()
 
     def get_usuario(self, cpf, senha):
@@ -84,6 +85,7 @@ class Database:
             return historico
 
         return False
+    
 
 #db = Database()
 

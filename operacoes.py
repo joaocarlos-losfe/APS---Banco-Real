@@ -1,8 +1,11 @@
+from pydoc import cli
 import threading
 
 from datetime import datetime
 from Modelos.cliente import Cliente
-from Modelos.conta1 import Conta
+from Modelos.conta import Conta
+
+from Padroes.observer import notify_new_account, notify_new_transfer, notify_new_deposit, notify_new_withdraw
 
 from database import Database
 
@@ -27,6 +30,10 @@ class OperacoesServidor:
 
         if self.database.adicionar_conta(conta) == "True":
             self.database.set_historico(f"conta aberta dia {conta._historico.data_abertura} Numero: {conta._numero_conta}. Limite: {conta._limite}", cpf)
+            
+            notify_new_account(conta)
+            conta.notify()
+            
             return "True/"+conta.numero
 
         return "False"
@@ -45,6 +52,16 @@ class OperacoesServidor:
                 self.database.atualizar_saldo(cpf, (conta[2] - float(valor)))
                 self.sinc.release()
                 self.database.set_historico(f"Saque realizado dia {datetime.today()} no valor de R$ {float(valor)}", cpf)
+               
+                cliente = self.database.get_cliente(cpf)
+                cliente = cliente.split('/')
+                print(cliente[1])
+
+                cliente = Cliente(cliente[0], cliente[1], cpf)
+                conta = Conta(cliente, "ttt")
+                notify_new_withdraw(conta)
+                conta.notify()
+
                 return "True"
 
         return "False"
@@ -71,6 +88,15 @@ class OperacoesServidor:
                 self.database.atualizar_saldo(conta_destino[1], conta_destino[2] + float(valor))
                 self.sinc.release()
                 self.database.set_historico(f"Transferencia recebida dia {datetime.today()} no valor de R$ {float(valor)} de {cpf_origem}", conta_destino[1])
+                
+                cliente = self.database.get_cliente(cpf_origem)
+                cliente = cliente.split('/')
+                print(cliente[1])
+                cliente = Cliente(cliente[0], cliente[1], cpf_origem)
+                conta = Conta(cliente, "ttt")
+                notify_new_transfer(conta)
+                conta.notify()
+
                 return "True"
 
         return "False"
@@ -78,11 +104,26 @@ class OperacoesServidor:
 
     def realizar_deposito(self, cpf, valor):
         conta = self.database.get_conta(cpf)
+
         if type(conta) == tuple:
             self.sinc.acquire()
             self.database.atualizar_saldo(cpf, float(conta[2] + float(valor)))
             self.sinc.release()
             self.database.set_historico(f"Deposito realizado dia {datetime.today()} no valor de R$ {float(valor)}", cpf)
+            
+            print(f"operações - deposito : {conta}")
+
+            cliente = self.database.get_cliente(cpf)
+            cliente = cliente.split('/')
+
+            print(cliente[1])
+
+            cliente = Cliente(cliente[0], cliente[1], cpf)
+            conta = Conta(cliente, "ttt")
+
+            notify_new_deposit(conta)
+            conta.notify()
+            
             return "True"
 
         return "False"

@@ -5,25 +5,41 @@ from Modelos.historico import Historico
 from random import randint
 from datetime import datetime
 
-
 class Conta():
 
-    _contador_contas = 0
 
-    __slots__ = ['_numero_conta', '_titular', '_senha_acesso', '_saldo', '_limite', '_historico']
+    __slots__ = ['_numero_conta', '_titular', '_senha_acesso', '_saldo', '_limite', '_historico', 'observers']
 
     # titular é do tipo Cliente()
 
-    def __init__(self, titular:Cliente, senha_acesso:str, limite = 10000):
+    def __init__(self, titular:object, senha_acesso:str, limite = 10000):
+
+        self.observers = [] #lista de observadores
+        
         self._numero_conta = f"{randint(1000, 9999)}" + f" {randint(1000, 9999)}" + f" {randint(1000, 9999)}"
         self._titular = titular
         self._senha_acesso = senha_acesso
         self._saldo = 0.0
         self._limite = limite
         self._historico = Historico()
-        Conta._contador_contas += 1
-     
+
         self._definir_historico(f"conta aberta dia {self._historico.data_abertura}. Numero: {self._numero_conta}. Limite: {self._limite}")
+
+    def getConta(self):
+        return self
+
+    def notify(self):
+        for observer in self.observers:
+            observer.update()
+        
+    def attach(self, observer):
+        self.observers.append(observer)
+
+    def detach(self):
+        return self.observers.pop()
+
+    def observados(self):
+        return [type(x).__name__ for x in self.observers]
 
     @property
     def saldo(self):

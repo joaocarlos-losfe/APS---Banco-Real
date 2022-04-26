@@ -16,7 +16,6 @@ class Estilos():
 
                 QPushButton:hover
                 {
-                    transition: all 1s ease-out;
                     background-color: #646464;
                 }
                 
@@ -43,7 +42,7 @@ class Estilos():
 
                 QPushButton:hover
                 {
-                    transition: all 1s ease-out;
+                  
                     background-color: #646464;
                 }
 
@@ -80,7 +79,6 @@ class Estilos():
                 
                 QPushButton:hover
                 {
-                    transition: all 1s ease-out;
                     background-color: #646464;
                 }
 
@@ -118,7 +116,6 @@ class Estilos():
 
                 QPushButton:hover
                 {
-                    transition: all 1s ease-out;
                     background-color: #646464;
                 }
 
