@@ -1,7 +1,7 @@
 class Cliente():
-    def __init__(self, nome:str,sobre_nome:str, cpf:str):
+    def __init__(self, nome:str,email:str, cpf:str):
         self._nome = nome
-        self._email = sobre_nome
+        self._email = email
         self._cpf = cpf
 
     @property

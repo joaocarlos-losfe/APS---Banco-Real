@@ -2,7 +2,7 @@ import threading
 
 from datetime import datetime
 from Modelos.cliente import Cliente
-from Modelos.conta import Conta
+from Modelos.conta1 import Conta
 
 from database import Database
 
