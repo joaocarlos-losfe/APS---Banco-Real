@@ -25,7 +25,7 @@ class notify_new_transfer(Observer):
     
     def update(self):
         mail = SendEmail()
-        mail.sendEmail(self._observer.titular.email, f'Transferencia realizada no valor')
+        mail.sendEmail(self._observer.titular.email,'Banco Real: transfência realizada com sucesso', f'Operação Transferencia realizada com sucesso!')
 
 #deposito
 class notify_new_deposit(Observer):
@@ -35,7 +35,7 @@ class notify_new_deposit(Observer):
     
     def update(self):
         mail = SendEmail()
-        mail.sendEmail(self._observer.titular.email, f'você realizou um novo deposito')
+        mail.sendEmail(self._observer.titular.email,'Banco Real: depósito realizado com sucesso' ,f'Operação depósito realizado com sucesso!')
 
 #sacar
 class notify_new_withdraw(Observer):
@@ -45,4 +45,4 @@ class notify_new_withdraw(Observer):
     
     def update(self):
         mail = SendEmail()
-        mail.sendEmail(self._observer.titular.email, f'você realizou um novo saque')
+        mail.sendEmail(self._observer.titular.email,'Banco Real: saque realizado com sucesso', f'Operação saque realizado com sucesso!')
