@@ -8,8 +8,8 @@ class SendEmail():
         # create message object instance
         self._msg = MIMEMultipart()
         # setup the parameters of the message
-        self._password = "tjzbdmfudgvaxucd"
-        self._msg['From'] = "hjunior854@gmail.com"
+        self._password = "pass"
+        self._msg['From'] = "email"
 
         # create server
         self._server = smtplib.SMTP('smtp.gmail.com: 587')
@@ -19,7 +19,7 @@ class SendEmail():
         # Login Credentials for sending the mail
         self._server.login(self._msg['From'], self._password)
 
-    def sendEmail(self, toEmail="wendelnunes9999@gmail.com", descricao="Subscription", message="Corpo da mensssagem da vazia!"):
+    def sendEmail(self, toEmail="email", descricao="Subscription", message="Corpo da mensssagem da vazia!"):
         # message = message
         # add in the message body
         self._msg.attach(MIMEText(message, 'plain'))
