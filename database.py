@@ -14,7 +14,7 @@ class Database(metaclass = Singleton):
         
         super().__init__()
 
-        self.conexao = mysql.connect(host = 'sql368.main-hosting.eu', db = 'u831868453_aps_areal_bank', user = 'u831868453_user_aps_areal', passwd = 'L0@xF*f+')
+        self.conexao = mysql.connect(host = 'host', db = 'dbname', user = 'user', passwd = 'pass')
         self.cursor = self.conexao.cursor()
         self.inicializar_db()
 
